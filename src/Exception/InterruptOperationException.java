@@ -1,4 +1,4 @@
 package Exception;
 
-public class InterruptOperationException {
+public class InterruptOperationException extends Exception{
 }

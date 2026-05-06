@@ -1,4 +1,4 @@
 package Exception;
 
-public class NotEnoughMoneyException {
+public class NotEnoughMoneyException extends Exception {
 }
