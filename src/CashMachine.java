@@ -13,9 +13,9 @@ public class CashMachine {
         String[] digit = ConsoleHelper.getValidTwoDigits(currencyCode);
         int nominal = Integer.parseInt(digit[0]);
         int col = Integer.parseInt(digit[1]);
-
         CurrencyManipulator currencyManipulator = new CurrencyManipulator(currencyCode);
         currencyManipulator.addAmount(nominal,col);
+        System.out.println(currencyManipulator.getTotalAmount());
 
     }
 }
