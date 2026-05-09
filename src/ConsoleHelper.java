@@ -1,3 +1,5 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -53,6 +55,20 @@ public class ConsoleHelper {
                     }
                 }
 
+    }
+    public static Operation askOperation() throws IOException {
+        while (true) {
+            ConsoleHelper.writeMessage("Введите команду 1-INFO, 2 - DEPOSIT, 3 - WITHDRAW, 4 - EXIT; от 1 до 4");
+            String s = ConsoleHelper.readString();
+            Integer i = Integer.parseInt(s);
+            if (s == null || i < 1 || i > 4) {
+                ConsoleHelper.writeMessage("Данные некорректны");
+                continue;
+            }
+            return Operation.getAllowableOperationByOrdinal(i);
+
+
+        }
     }
 
 }
