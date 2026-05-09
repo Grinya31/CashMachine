@@ -1,3 +1,5 @@
+import src.CurrencyManipulator;
+
 import java.util.Map;
 
 public class CurrencyManipulatorFactory {
