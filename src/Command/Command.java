@@ -1,5 +1,7 @@
 package Command;
 
+import java.io.IOException;
+
 public interface Command {
-    public void excute();
+    public void execute() throws IOException;
 }

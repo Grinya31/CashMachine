@@ -1,8 +1,8 @@
 package Command;
 
-public class ExitCommand implements Command{
+public class WithdrawCommand implements Command{
     @Override
     public void execute() {
-        
+
     }
 }

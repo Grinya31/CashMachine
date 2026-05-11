@@ -1,6 +1,7 @@
 package src;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -10,8 +11,12 @@ public class CurrencyManipulator {
     private Map<Integer,Integer> denominations;
 
     public CurrencyManipulator(String currencyCode) {
-        this.currencyCode = currencyCode;
-        this.denominations = new TreeMap<>();
+        if (currencyCode == null || currencyCode.trim().isEmpty()) {
+            throw new IllegalArgumentException("Currency code cannot be null or empty");
+        }
+        this.currencyCode = currencyCode.toUpperCase();
+        this.denominations = new HashMap<>();
+        System.out.println("CurrencyManipulator created for: " + this.currencyCode);
     }
 
     public String getCurrencyCode() {
@@ -35,6 +40,15 @@ public class CurrencyManipulator {
         }
         return a;
     }
+
+    public boolean hasMoney(){
+        int a = 0;
+        for ( Integer count : denominations.values()){
+            a+= count;}
+        if ( a <=  0 ){ return false;}
+        else { return true;}
+    }
+
 
 
 }
