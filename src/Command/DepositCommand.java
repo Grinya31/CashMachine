@@ -1,5 +1,5 @@
 package Command;
-
+import Exception.InterruptOperationException;
 import src.ConsoleHelper;
 import src.CurrencyManipulator;
 import src.CurrencyManipulatorFactory;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 class DepositCommand implements Command {
     @Override
-    public void execute() throws IOException {
+    public void execute() throws InterruptOperationException {
         ConsoleHelper.writeMessage("Deposuting....");
         String currencyCode = ConsoleHelper.askCurrencyCode();
         CurrencyManipulator manipulator = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(currencyCode);
@@ -23,7 +23,9 @@ class DepositCommand implements Command {
                 manipulator.addAmount(denomination, count);
                 ConsoleHelper.writeMessage(String.format("%d %s was deposited successfully", (denomination * count), currencyCode));
                 break;
-            } catch (NumberFormatException e) {
+            }
+            catch (InterruptedException e ){}
+            catch (NumberFormatException e) {
                 ConsoleHelper.writeMessage("Please specify valid data.");
             }
         }

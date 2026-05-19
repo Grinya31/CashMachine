@@ -2,7 +2,7 @@ package Command;
 
 
 import src.*;
-
+import Exception.InterruptOperationException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,5 +20,5 @@ public class CommandExecutor {
 
     private CommandExecutor(){};
 
-    public static final void execute(Operation operation) throws IOException {allKnownCommandsMap.get(operation).execute();}
+    public static final void execute(Operation operation) throws InterruptOperationException {allKnownCommandsMap.get(operation).execute();}
 }

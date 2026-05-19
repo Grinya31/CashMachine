@@ -1,5 +1,5 @@
 package src;
-
+import Exception.InterruptOperationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,9 +8,10 @@ public class ConsoleHelper {
 
     private static final BufferedReader bis = new BufferedReader(new InputStreamReader(System.in));
     public static void writeMessage(String message){System.out.println(message);};
-    public static String readString() throws IOException {
+    public static String readString() throws InterruptOperationException {
             try {
                 String text = bis.readLine();
+                if (text.equals("exit") || text.equals("EXIT")){ throw new InterruptOperationException();}
                 return text;
             } catch (IOException ignored) {
                 /* NOP */
@@ -20,7 +21,7 @@ public class ConsoleHelper {
 
     }
 
-    public static String askCurrencyCode() throws IOException {
+    public static String askCurrencyCode() throws InterruptOperationException {
 
 
         while (true){
@@ -31,7 +32,7 @@ public class ConsoleHelper {
         return s.trim().toUpperCase();}
     }
 
-    public static String[] getValidTwoDigits(String currencyCode) throws IOException {
+    public static String[] getValidTwoDigits(String currencyCode) throws InterruptOperationException {
 
 
         while (true){
@@ -54,7 +55,7 @@ public class ConsoleHelper {
                 }
 
     }
-    public static Operation askOperation() throws IOException {
+    public static Operation askOperation() throws InterruptOperationException {
         while (true) {
             ConsoleHelper.writeMessage("Введите команду 1-INFO, 2 - DEPOSIT, 3 - WITHDRAW, 4 - EXIT; от 1 до 4");
             String s = ConsoleHelper.readString();
@@ -68,5 +69,7 @@ public class ConsoleHelper {
 
         }
     }
+
+
 
 }
