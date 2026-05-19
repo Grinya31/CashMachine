@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class CashMachine {
-    public static void main(String[] args) throws IOException, InterruptOperationException {
+    public static void main(String[] args) throws InterruptedException{
         Locale.setDefault(Locale.ENGLISH);
         try {
-            Operation oper;
+            Operation oper = Operation.LOGIN;
+            CommandExecutor.execute(oper);
             do {
                 oper = ConsoleHelper.askOperation();
                 CommandExecutor.execute(oper);
